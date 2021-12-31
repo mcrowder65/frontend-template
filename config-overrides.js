@@ -1,13 +1,19 @@
 const {
   override,
   addBabelPlugin,
-  disableEsLint,
   addBundleVisualizer,
   addBabelPreset,
 } = require("customize-cra")
 
 let config = override(
-  disableEsLint(),
+  (config) => {
+    config.plugins = config.plugins.filter((plugin) => {
+      return plugin.key !== "ESLintWebpackPlugin"
+    })
+    // Adds human readable names to chunks
+    config.optimization.chunkIds = "named"
+    return config
+  },
   addBabelPlugin("@emotion/babel-plugin"),
   addBabelPreset("@emotion/babel-preset-css-prop"),
   process.env.ANALYZE && addBundleVisualizer(),

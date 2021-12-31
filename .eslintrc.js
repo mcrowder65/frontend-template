@@ -16,6 +16,8 @@ module.exports = {
     },
   },
   rules: {
+    "no-console": "error",
+    "no-param-reassign": "off",
     "no-use-before-define": "error",
     "no-shadow": "off",
   },

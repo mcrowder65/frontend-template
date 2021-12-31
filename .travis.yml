@@ -1,5 +1,0 @@
-language: node_js
-node_js: 16.13.1
-cache: yarn
-script:
-  - yarn test;
